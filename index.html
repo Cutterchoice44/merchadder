@@ -30,10 +30,12 @@
       padding: 0.56rem 0.75rem !important;
       margin: 0 !important;
       box-sizing: border-box !important;
+
       background-image: url("/images/bricks.png") !important;
       background-repeat: repeat-x !important;
       background-position: center center !important;
       background-size: auto 500px !important;
+
       border-top:    2px solid var(--brand-teal) !important;
       border-bottom: 2px solid var(--brand-teal) !important;
     }
@@ -61,13 +63,13 @@
         display: none !important;
       }
       #main-nav .nav-center {
-        display: block !important;
-        width: 100% !important;
+        display: block      !important;
+        width: 100%         !important;
         text-align: center !important;
       }
       #main-nav .nav-center a {
         display: inline-block !important;
-        margin: 0 auto !important;
+        margin: 0 auto       !important;
       }
     }
   </style>
@@ -122,7 +124,7 @@
       <a href="index-ourDJS.html">OUR DJS</a>
     </div>
     <div class="nav-item nav-right">
-      <!-- now points to merch.html -->
+      <!-- MERCH now points at merch.html -->
       <a href="merch.html">MERCH</a>
       <a href="https://facebook.com/cutterschoiceradio" target="_blank" class="social-icon">
         <i class="fab fa-facebook-f"></i>
@@ -149,7 +151,6 @@
         <button class="popout-btn" onclick="openChatPopup()">Pop Out Chat</button>
       </div>
       <div class="rc-user-list-container">
-        <h3></h3>
         <div class="rc-user-list"></div>
       </div>
     </section>
@@ -165,11 +166,7 @@
         </iframe>
         <div id="now-archive">Loading archive show…</div>
         <button id="popOutBtn" class="popout-btn">Pop Out Player</button>
-        <button
-          id="chatPopupBtn"
-          class="popout-btn chat-btn-mobile"
-          onclick="openChatPopup()"
-        >Chat</button>
+        <button id="chatPopupBtn" class="popout-btn chat-btn-mobile" onclick="openChatPopup()">Chat</button>
       </div>
       <h3>This Week’s Shows</h3>
       <img
@@ -193,11 +190,7 @@
       <h2>Latest Archived Shows</h2>
       <div id="mixcloud-list"></div>
       <div class="add-mixcloud">
-        <input
-          id="mixcloud-url"
-          type="text"
-          placeholder="Paste Mixcloud URL here…"
-        >
+        <input id="mixcloud-url" type="text" placeholder="Paste Mixcloud URL here…">
         <button onclick="addMixcloud()">Add Show</button>
       </div>
     </section>
@@ -210,7 +203,7 @@
   <script src="script.js?v=1748228619634" defer></script>
   <script src="slideshow.js?v=1748228619634" defer></script>
 
-  <!-- GIF-SWAP SCRIPT: alternates GIF sets every 2 animation loops -->
+  <!-- GIF‐SWAP SCRIPT: alternates GIF sets every 2 animation loops -->
   <script>
     (function(){
       const right = document.querySelector('.header-gif-right');
