@@ -19,45 +19,58 @@
     :root { --brand-teal: #5A8785; }
 
 #main-nav {
-  position: relative;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-  padding: 0.56rem 0.75rem !important;
-  background-repeat: repeat-x !important;
-  background-position: center center !important;
-  background-size: auto 500px !important;
-  border-top: 2px solid var(--brand-teal) !important;
-  border-bottom: 2px solid var(--brand-teal) !important;
-  /* draw black strip behind items */
-}
-#main-nav::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 4rem; /* match nav-item height */
-  transform: translateY(-50%);
-  background: #5A8785;
-  z-index: 0;
-}
-#main-nav .nav-item {
-  position: relative;
-  z-index: 1;
-}
-#main-nav .nav-item a {
-  color: #fff !important;
-  font-size: 2rem !important;
-  text-transform: uppercase !important;
-  text-decoration: none !important;
-}
-#main-nav {
-  font-family: 'Bebas Neue', sans-serif;
-  position: relative;
-  display: flex !important;
-  /* …the rest of your nav rules… */
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0.25rem 0.75rem !important;
+    margin: 0 !important;
+    box-sizing: border-box 
+
+    /* Force a solid teal background so bricks never show */
+    background-color: var(--brand-teal) !important;
+    /* Sit on top of any underlying brick image */
+    position: relative;
+    z-index: 1000;
+
+    border-top:    2px solid var(--brand-teal) !important;
+    border-bottom: 2px solid var(--brand-teal) !important;
+  }
+  #main-nav .nav-item { flex: 1 !important; }
+  #main-nav .nav-left   { text-align: left !important; }
+  #main-nav .nav-center { text-align: center !important; }
+  #main-nav .nav-right  { text-align: right !important; }
+
+  #main-nav a {
+    color: #fff !important;
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 2rem !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    margin: 0 0.5rem !important;
+  }
+  #main-nav .social-icon {
+    margin-left: 0.5rem !important;
+    font-size: 1.2rem !important;
+    vertical-align: middle !important;
+  }
+
+  @media (max-width: 768px) {
+    #main-nav .nav-left,
+    #main-nav .nav-right {
+      display: none !important;
+    }
+    #main-nav .nav-center {
+      display: block      !important;
+      width: 100%         !important;
+      text-align: center !important;
+    }
+    #main-nav .nav-center a {
+      display: inline-block !important;
+      margin: 0 auto       !important;
+    }
+  }
+</style>
 }
     /* ─── MERCH IFRAME SCALING ─────────────────────────────────────────── */
     .iframe-wrapper {
