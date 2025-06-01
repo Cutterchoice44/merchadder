@@ -8,7 +8,7 @@
   <meta http-equiv="Expires"      content="0">
   <meta name="viewport"           content="width=device-width, initial-scale=1.0">
   <title>Merch – Cutters Choice Radio</title>
-  
+
   <!-- Main stylesheet & fonts/icons -->
   <link rel="stylesheet" href="style.css?v=1748228619634">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -28,64 +28,63 @@
     }
 
     /* ─── NAVIGATION BAR ─────────────────────────────────────────────────── */
-    /* 1) A 2px white stripe + 2px black stripe above, then a full-width teal bar,
-         then a 2px black stripe + 2px white stripe below. 
-       2) Three links (“HOME” / “OUR DJS” / “OUR STORY”), each spanning exactly one-third of the width. 
-       3) Each link is centered within its third. */
+    /*   1) Two thin stripes (white then black) above the teal bar           */
+    /*   2) Teal bar with three links spaced left, center, right            */
+    /*   3) Two thin stripes (black then white) below the teal bar          */
 
     #main-nav {
       position: relative;
-      display: flex;                  /* arrange children in a row */
+      display: flex;               /* three children in one row */
       width: 100%;
-      margin-top: 1.5rem;             /* push nav down from page top */
+      margin-top: 1.5rem;          /* drop nav below top of page */
+      padding: 0.8rem 0;           /* vertical padding only (no horizontal padding) */
       background-color: var(--teal);
-      padding: 0.8rem 0;              /* vertical padding to match mockup */
       z-index: 1000;
     }
 
-    /* ─── TOP PSEUDO‐STRIPES ───────────────────────────────────────────── */
+    /* ─── Top pseudo‐stripes: 2px white over 2px black ───────────────────── */
     #main-nav::before {
       content: "";
       position: absolute;
-      top: -4px;       /* 4px above the teal block */
+      top: -4px;   /* 4px above the teal bar */
       left: 0;
       width: 100%;
       height: 4px;
       background: linear-gradient(
         to bottom,
-        #fff 0px,   /* white from 0→2px */
+        #fff 0px,  /* white from 0→2px */
         #fff 2px,
-        #000 2px,   /* black from 2→4px */
+        #000 2px,  /* black from 2→4px */
         #000 4px
       );
       z-index: 2;
     }
 
-    /* ─── BOTTOM PSEUDO‐STRIPES ────────────────────────────────────────── */
+    /* ─── Bottom pseudo‐stripes: 2px black over 2px white ───────────────── */
     #main-nav::after {
       content: "";
       position: absolute;
-      bottom: -4px;    /* 4px below the teal block */
+      bottom: -4px; /* 4px below the teal bar */
       left: 0;
       width: 100%;
       height: 4px;
       background: linear-gradient(
         to bottom,
-        #000 0px,   /* black from 0→2px */
+        #000 0px,  /* black from 0→2px */
         #000 2px,
-        #fff 2px,   /* white from 2→4px */
+        #fff 2px,  /* white from 2→4px */
         #fff 4px
       );
       z-index: 2;
     }
 
-    /* ─── NAV ITEMS: each link occupies 1/3 and is centered within its cell ───────── */
+    /* ─── Each nav‐item is exactly one‐third of the width and centers its link ─── */
     #main-nav .nav-item {
-      flex: 1;              /* all nav-items share equal width (one third each) */
-      text-align: center;   /* center the link within that third */
+      flex: 1;               /* all three items share equal width */
+      text-align: center;    /* center their link text */
     }
 
-    /* ─── LINK STYLING ───────────────────────────────────────────────── */
+    /* ─── Link styling identical to other pages ─────────────────────────────── */
     #main-nav .nav-item a {
       color: #fff;
       font-family: 'Bebas Neue', sans-serif;
@@ -96,22 +95,24 @@
     }
 
     @media (max-width: 768px) {
-      /* On narrow screens, stack the three links vertically */
+      /* On narrow screens, stack links vertically */
       #main-nav {
         flex-direction: column;
-        padding: 1rem 0;    /* increase vertical padding for touch ease */
+        padding: 1rem 0;      /* increase vertical padding for touch ease */
       }
+      /* Hide pseudo‐stripes on mobile */
       #main-nav::before,
       #main-nav::after {
-        display: none;      /* hide pseudo-stripes on mobile */
+        display: none;
       }
+      /* Each link occupies full width when stacked */
       #main-nav .nav-item {
         width: 100%;
-        margin: 0.5rem 0;   /* add spacing between stacked links */
+        margin: 0.5rem 0;
       }
     }
 
-    /* ─── MERCH IFRAME SCALING ───────────────────────────────────────── */
+    /* ─── MERCH IFRAME SCALING ────────────────────────────────────────────── */
     .iframe-wrapper {
       width: 100%;
       height: 1000px;       /* 2× the original 500px */
@@ -130,7 +131,7 @@
 </head>
 
 <body>
-  <!-- HEADER (same as on your other pages) -->
+  <!-- HEADER (same as other pages) -->
   <header class="header-banner">
     <div class="header-gif-right"></div>
     <div class="header-gif-left"></div>
@@ -146,7 +147,7 @@
     </div>
   </header>
 
-  <!-- NAV: “HOME” at left third, “OUR DJS” center third, “OUR STORY” right third -->
+  <!-- NAV: “HOME” left, “OUR DJS” center, “OUR STORY” right, with thin stripes above/below -->
   <nav id="main-nav">
     <div class="nav-item nav-left">
       <a href="index.html#history">HOME</a>
@@ -159,7 +160,7 @@
     </div>
   </nav>
 
-  <!-- MERCH CONTENT: no extra heading or back button, since “HOME” covers navigation -->
+  <!-- MERCH CONTENT (no redundant headings/buttons) -->
   <main class="merch-section" style="padding:0; margin:0 auto; max-width:900px;">
     <div class="iframe-wrapper">
       <iframe
