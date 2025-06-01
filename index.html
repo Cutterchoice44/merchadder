@@ -28,31 +28,26 @@
     }
 
     /* ─── NAVIGATION BAR ─────────────────────────────────────────────────── */
-    /* 1) A thin white stripe + black stripe above, then a teal bar, then black + white below
-       2) HOME flushed left, OUR DJS centered, OUR STORY flushed right */
+    /* 1) A 2px white stripe + 2px black stripe above, then a full-width teal bar,
+         then a 2px black stripe + 2px white stripe below. 
+       2) Three links (“HOME” / “OUR DJS” / “OUR STORY”), each spanning exactly one-third of the width. 
+       3) Each link is centered within its third. */
 
     #main-nav {
       position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex;                  /* arrange children in a row */
       width: 100%;
-      
-      /* Push nav farther down from page top */
-      margin-top: 1.5rem;
-
-      /* Vertical padding so text sits nicely between stripes */
-      padding: 0.8rem 1rem;
-
+      margin-top: 1.5rem;             /* push nav down from page top */
       background-color: var(--teal);
+      padding: 0.8rem 0;              /* vertical padding to match mockup */
       z-index: 1000;
     }
 
-    /* ─── Top stripes: 2px white over 2px black ───────────────────────────── */
+    /* ─── TOP PSEUDO‐STRIPES ───────────────────────────────────────────── */
     #main-nav::before {
       content: "";
       position: absolute;
-      top: -4px;      /* 4px above the top of the teal */
+      top: -4px;       /* 4px above the teal block */
       left: 0;
       width: 100%;
       height: 4px;
@@ -66,11 +61,11 @@
       z-index: 2;
     }
 
-    /* ─── Bottom stripes: 2px black over 2px white ───────────────────────── */
+    /* ─── BOTTOM PSEUDO‐STRIPES ────────────────────────────────────────── */
     #main-nav::after {
       content: "";
       position: absolute;
-      bottom: -4px;   /* 4px below the bottom of the teal */
+      bottom: -4px;    /* 4px below the teal block */
       left: 0;
       width: 100%;
       height: 4px;
@@ -84,24 +79,13 @@
       z-index: 2;
     }
 
-    /* ─── Left link (HOME) sits flush left ───────────────────────────────── */
-    .nav-left {
-      /* No extra flex: the container's padding(1rem) provides some space */
+    /* ─── NAV ITEMS: each link occupies 1/3 and is centered within its cell ───────── */
+    #main-nav .nav-item {
+      flex: 1;              /* all nav-items share equal width (one third each) */
+      text-align: center;   /* center the link within that third */
     }
 
-    /* ─── Center link (OUR DJS) is absolutely centered ─────────────────────── */
-    .nav-center {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    /* ─── Right link (OUR STORY) sits flush right ─────────────────────────── */
-    .nav-right {
-      /* No extra flex: container's padding(1rem) provides margin */
-    }
-
-    /* ─── Link styling (identical font, size, color) ───────────────────────── */
+    /* ─── LINK STYLING ───────────────────────────────────────────────── */
     #main-nav .nav-item a {
       color: #fff;
       font-family: 'Bebas Neue', sans-serif;
@@ -112,28 +96,22 @@
     }
 
     @media (max-width: 768px) {
-      /* On mobile, stack links vertically for readability */
+      /* On narrow screens, stack the three links vertically */
       #main-nav {
         flex-direction: column;
-        padding: 1rem 0;
+        padding: 1rem 0;    /* increase vertical padding for touch ease */
       }
-      /* Hide the pseudo‐stripes on small screens */
       #main-nav::before,
       #main-nav::after {
-        display: none;
+        display: none;      /* hide pseudo-stripes on mobile */
       }
-      .nav-left,
-      .nav-center,
-      .nav-right {
-        position: static;      /* remove absolute centering */
-        transform: none;
+      #main-nav .nav-item {
         width: 100%;
-        text-align: center;
-        margin: 0.5rem 0;
+        margin: 0.5rem 0;   /* add spacing between stacked links */
       }
     }
 
-    /* ─── MERCH IFRAME SCALING ─────────────────────────────────────────── */
+    /* ─── MERCH IFRAME SCALING ───────────────────────────────────────── */
     .iframe-wrapper {
       width: 100%;
       height: 1000px;       /* 2× the original 500px */
@@ -168,7 +146,7 @@
     </div>
   </header>
 
-  <!-- NAV (exactly like your mockup) -->
+  <!-- NAV: “HOME” at left third, “OUR DJS” center third, “OUR STORY” right third -->
   <nav id="main-nav">
     <div class="nav-item nav-left">
       <a href="index.html#history">HOME</a>
@@ -181,7 +159,7 @@
     </div>
   </nav>
 
-  <!-- MERCH CONTENT: no redundant heading or back button -->
+  <!-- MERCH CONTENT: no extra heading or back button, since “HOME” covers navigation -->
   <main class="merch-section" style="padding:0; margin:0 auto; max-width:900px;">
     <div class="iframe-wrapper">
       <iframe
