@@ -28,48 +28,60 @@
     }
 
     /* ─── NAVIGATION BAR ─────────────────────────────────────────────────── */
-    /* Space three titles evenly, draw thin teal lines just above and below */
+    /* Three titles spaced across full width, with thin teal lines above & below black borders */
     #main-nav {
       display: flex !important;
-      justify-content: space-evenly !important;
+      justify-content: space-between !important;
       align-items: center !important;
       width: 100% !important;
-      margin-top: 2rem !important;            /* drop nav further from top */
-      padding: 0.5rem 0 !important;            /* vertical padding so text is centered */
+
+      /* Drop the nav further from the top */
+      margin-top: 1.5rem !important;
+
+      /* Padding so text is vertically centered between black lines */
+      padding: 0.5rem 1rem !important;
+
       background-color: var(--teal) !important;
       position: relative !important;
       z-index: 1000 !important;
-      border: none !important;
+
+      /* Thin black lines immediately inside the teal block */
+      border-top: 2px solid #000;
+      border-bottom: 2px solid #000;
     }
-    /* Thin teal line just above the teal block */
+
+    /* Thin teal line immediately above the black top border */
     #main-nav::before {
       content: "";
       position: absolute;
-      top: -2px;              /* 2px above nav */
+      top: -2px;               /* flush with the top of the black border */
       left: 0;
       width: 100%;
       height: 2px;
       background-color: var(--teal);
       z-index: 2;
     }
-    /* Thin teal line just below the teal block */
+
+    /* Thin teal line immediately below the black bottom border */
     #main-nav::after {
       content: "";
       position: absolute;
-      bottom: -2px;           /* 2px below nav */
+      bottom: -2px;            /* flush with the bottom of the black border */
       left: 0;
       width: 100%;
       height: 2px;
       background-color: var(--teal);
       z-index: 2;
     }
-    /* Ensure each nav-item’s text is vertically centered */
+
+    /* Each nav-item takes 1/3 of width and centers its link */
     #main-nav .nav-item {
       flex: 1 !important;
       display: flex !important;
       justify-content: center !important;
       align-items: center !important;
     }
+
     /* Link styling */
     #main-nav .nav-item a {
       color: #fff !important;
@@ -79,17 +91,23 @@
       text-decoration: none !important;
       line-height: 1 !important;
     }
+
     @media (max-width: 768px) {
-      #main-nav .nav-item {
-        flex: 1 1 100% !important;
-      }
+      /* On mobile, stack them vertically */
       #main-nav {
         flex-direction: column !important;
         padding: 1rem 0 !important;
       }
+      /* Hide the thin teal lines on mobile for simplicity */
       #main-nav::before,
       #main-nav::after {
-        display: none; /* hide thin lines on mobile for simplicity */
+        display: none;
+      }
+      /* Each item full width */
+      #main-nav .nav-item {
+        width: 100%;
+        justify-content: center !important;
+        margin: 0.5rem 0;
       }
     }
 
@@ -128,7 +146,7 @@
     </div>
   </header>
 
-  <!-- NAV (three titles spaced evenly, with thin teal lines above/below) -->
+  <!-- NAV (three titles spaced evenly, with thin teal lines above & below) -->
   <nav id="main-nav">
     <div class="nav-item nav-left">
       <a href="index.html#history">HOME</a>
@@ -141,7 +159,7 @@
     </div>
   </nav>
 
-  <!-- MERCH CONTENT: Removed redundant “Merch” heading and Back button -->
+  <!-- MERCH CONTENT: No redundant headings or back button -->
   <main class="merch-section" style="padding:0; margin:0 auto; max-width:900px;">
     <div class="iframe-wrapper">
       <iframe
