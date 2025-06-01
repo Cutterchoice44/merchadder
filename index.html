@@ -27,96 +27,108 @@
       padding: 0;
     }
 
-    /* ─── NAVIGATION BAR (exactly matching your mockup) ────────────────── */
-    /*   - A 2px white stripe, then a 2px black stripe at the very top   */
-    /*   - A teal bar in the middle with three links                 */
-    /*   - A 2px black stripe, then a 2px white stripe at the bottom   */
+    /* ─── NAVIGATION BAR ─────────────────────────────────────────────────── */
+    /* 1) A thin white stripe + black stripe above, then a teal bar, then black + white below
+       2) HOME flushed left, OUR DJS centered, OUR STORY flushed right */
 
     #main-nav {
       position: relative;
-      display: flex !important;
-      justify-content: space-between !important;
-      align-items: center !important;
-      width: 100% !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      
+      /* Push nav farther down from page top */
+      margin-top: 1.5rem;
 
-      /* push nav farther down from the very top of the page */
-      margin-top: 1.5rem !important;
+      /* Vertical padding so text sits nicely between stripes */
+      padding: 0.8rem 1rem;
 
-      /* vertical padding so the links sit nicely between the black stripes */
-      padding: 0.8rem 1rem !important;
-
-      background-color: var(--teal) !important;
-      z-index: 1000 !important;
+      background-color: var(--teal);
+      z-index: 1000;
     }
 
-    /* ─── Top: a 4px-high pseudo-layer (2px white above, 2px black below) ─── */
+    /* ─── Top stripes: 2px white over 2px black ───────────────────────────── */
     #main-nav::before {
       content: "";
       position: absolute;
-      top: -4px;      /* 4px above the top edge of the teal */
+      top: -4px;      /* 4px above the top of the teal */
       left: 0;
       width: 100%;
       height: 4px;
       background: linear-gradient(
         to bottom,
-        #fff 0px,    /* white stripe from 0→2px */
+        #fff 0px,   /* white from 0→2px */
         #fff 2px,
-        #000 2px,    /* black stripe from 2→4px */
+        #000 2px,   /* black from 2→4px */
         #000 4px
       );
       z-index: 2;
     }
 
-    /* ─── Bottom: a 4px-high pseudo-layer (2px black above, 2px white below) ─── */
+    /* ─── Bottom stripes: 2px black over 2px white ───────────────────────── */
     #main-nav::after {
       content: "";
       position: absolute;
-      bottom: -4px;   /* 4px below the bottom edge of the teal */
+      bottom: -4px;   /* 4px below the bottom of the teal */
       left: 0;
       width: 100%;
       height: 4px;
       background: linear-gradient(
         to bottom,
-        #000 0px,    /* black stripe from 0→2px */
+        #000 0px,   /* black from 0→2px */
         #000 2px,
-        #fff 2px,    /* white stripe from 2→4px */
+        #fff 2px,   /* white from 2→4px */
         #fff 4px
       );
       z-index: 2;
     }
 
-    /* ─── Each nav-item takes up 1/3 of the total width and centers its link text ─── */
-    #main-nav .nav-item {
-      flex: 1 !important;
-      display: flex !important;
-      justify-content: center !important;
-      align-items: center !important;
+    /* ─── Left link (HOME) sits flush left ───────────────────────────────── */
+    .nav-left {
+      /* No extra flex: the container's padding(1rem) provides some space */
     }
 
-    /* ─── Link styling identical to your other pages ───────────────────────────────── */
+    /* ─── Center link (OUR DJS) is absolutely centered ─────────────────────── */
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* ─── Right link (OUR STORY) sits flush right ─────────────────────────── */
+    .nav-right {
+      /* No extra flex: container's padding(1rem) provides margin */
+    }
+
+    /* ─── Link styling (identical font, size, color) ───────────────────────── */
     #main-nav .nav-item a {
-      color: #fff !important;
-      font-family: 'Bebas Neue', sans-serif !important;
-      font-size: 2rem !important;
-      text-transform: uppercase !important;
-      text-decoration: none !important;
-      line-height: 1 !important;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
     }
 
     @media (max-width: 768px) {
-      /* On narrow screens, stack all three links vertically */
+      /* On mobile, stack links vertically for readability */
       #main-nav {
-        flex-direction: column !important;
-        padding: 1rem 0 !important;
+        flex-direction: column;
+        padding: 1rem 0;
       }
-      /* Hide the pseudo before/after stripes on mobile for simplicity */
+      /* Hide the pseudo‐stripes on small screens */
       #main-nav::before,
       #main-nav::after {
         display: none;
       }
-      /* Give each link its own full‐width row */
-      #main-nav .nav-item {
+      .nav-left,
+      .nav-center,
+      .nav-right {
+        position: static;      /* remove absolute centering */
+        transform: none;
         width: 100%;
+        text-align: center;
         margin: 0.5rem 0;
       }
     }
@@ -156,7 +168,7 @@
     </div>
   </header>
 
-  <!-- NAV (now styled exactly like your mockup) -->
+  <!-- NAV (exactly like your mockup) -->
   <nav id="main-nav">
     <div class="nav-item nav-left">
       <a href="index.html#history">HOME</a>
@@ -169,7 +181,7 @@
     </div>
   </nav>
 
-  <!-- MERCH CONTENT: no extra heading or button needed if “HOME” is in the nav -->
+  <!-- MERCH CONTENT: no redundant heading or back button -->
   <main class="merch-section" style="padding:0; margin:0 auto; max-width:900px;">
     <div class="iframe-wrapper">
       <iframe
