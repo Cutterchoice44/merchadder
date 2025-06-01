@@ -27,54 +27,65 @@
       padding: 0;
     }
 
-    /* ─── NAVIGATION BAR ─────────────────────────────────────────────────── */
-    /* Three titles spaced across full width, with thin teal lines above & below black borders */
+    /* ─── NAVIGATION BAR (exactly matching your mockup) ────────────────── */
+    /*   - A 2px white stripe, then a 2px black stripe at the very top   */
+    /*   - A teal bar in the middle with three links                 */
+    /*   - A 2px black stripe, then a 2px white stripe at the bottom   */
+
     #main-nav {
+      position: relative;
       display: flex !important;
       justify-content: space-between !important;
       align-items: center !important;
       width: 100% !important;
 
-      /* Drop the nav further from the top */
+      /* push nav farther down from the very top of the page */
       margin-top: 1.5rem !important;
 
-      /* Padding so text is vertically centered between black lines */
-      padding: 0.5rem 1rem !important;
+      /* vertical padding so the links sit nicely between the black stripes */
+      padding: 0.8rem 1rem !important;
 
       background-color: var(--teal) !important;
-      position: relative !important;
       z-index: 1000 !important;
-
-      /* Thin black lines immediately inside the teal block */
-      border-top: 2px solid #000;
-      border-bottom: 2px solid #000;
     }
 
-    /* Thin teal line immediately above the black top border */
+    /* ─── Top: a 4px-high pseudo-layer (2px white above, 2px black below) ─── */
     #main-nav::before {
       content: "";
       position: absolute;
-      top: -2px;               /* flush with the top of the black border */
+      top: -4px;      /* 4px above the top edge of the teal */
       left: 0;
       width: 100%;
-      height: 2px;
-      background-color: var(--teal);
+      height: 4px;
+      background: linear-gradient(
+        to bottom,
+        #fff 0px,    /* white stripe from 0→2px */
+        #fff 2px,
+        #000 2px,    /* black stripe from 2→4px */
+        #000 4px
+      );
       z-index: 2;
     }
 
-    /* Thin teal line immediately below the black bottom border */
+    /* ─── Bottom: a 4px-high pseudo-layer (2px black above, 2px white below) ─── */
     #main-nav::after {
       content: "";
       position: absolute;
-      bottom: -2px;            /* flush with the bottom of the black border */
+      bottom: -4px;   /* 4px below the bottom edge of the teal */
       left: 0;
       width: 100%;
-      height: 2px;
-      background-color: var(--teal);
+      height: 4px;
+      background: linear-gradient(
+        to bottom,
+        #000 0px,    /* black stripe from 0→2px */
+        #000 2px,
+        #fff 2px,    /* white stripe from 2→4px */
+        #fff 4px
+      );
       z-index: 2;
     }
 
-    /* Each nav-item takes 1/3 of width and centers its link */
+    /* ─── Each nav-item takes up 1/3 of the total width and centers its link text ─── */
     #main-nav .nav-item {
       flex: 1 !important;
       display: flex !important;
@@ -82,7 +93,7 @@
       align-items: center !important;
     }
 
-    /* Link styling */
+    /* ─── Link styling identical to your other pages ───────────────────────────────── */
     #main-nav .nav-item a {
       color: #fff !important;
       font-family: 'Bebas Neue', sans-serif !important;
@@ -93,20 +104,19 @@
     }
 
     @media (max-width: 768px) {
-      /* On mobile, stack them vertically */
+      /* On narrow screens, stack all three links vertically */
       #main-nav {
         flex-direction: column !important;
         padding: 1rem 0 !important;
       }
-      /* Hide the thin teal lines on mobile for simplicity */
+      /* Hide the pseudo before/after stripes on mobile for simplicity */
       #main-nav::before,
       #main-nav::after {
         display: none;
       }
-      /* Each item full width */
+      /* Give each link its own full‐width row */
       #main-nav .nav-item {
         width: 100%;
-        justify-content: center !important;
         margin: 0.5rem 0;
       }
     }
@@ -130,7 +140,7 @@
 </head>
 
 <body>
-  <!-- HEADER (same as index.html) -->
+  <!-- HEADER (same as on your other pages) -->
   <header class="header-banner">
     <div class="header-gif-right"></div>
     <div class="header-gif-left"></div>
@@ -146,7 +156,7 @@
     </div>
   </header>
 
-  <!-- NAV (three titles spaced evenly, with thin teal lines above & below) -->
+  <!-- NAV (now styled exactly like your mockup) -->
   <nav id="main-nav">
     <div class="nav-item nav-left">
       <a href="index.html#history">HOME</a>
@@ -159,7 +169,7 @@
     </div>
   </nav>
 
-  <!-- MERCH CONTENT: No redundant headings or back button -->
+  <!-- MERCH CONTENT: no extra heading or button needed if “HOME” is in the nav -->
   <main class="merch-section" style="padding:0; margin:0 auto; max-width:900px;">
     <div class="iframe-wrapper">
       <iframe
